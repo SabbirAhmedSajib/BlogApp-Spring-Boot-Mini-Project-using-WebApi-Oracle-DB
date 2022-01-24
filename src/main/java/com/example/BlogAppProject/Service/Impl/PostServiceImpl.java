@@ -8,10 +8,10 @@ import com.example.BlogAppProject.Repository.PostRepository;
 import com.example.BlogAppProject.Service.PostService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +44,7 @@ public class PostServiceImpl implements PostService {
                 Sort.by(sortBy).descending();
 
         //Create Page able instance
-        PageRequest pageable= PageRequest.of(pageNo,pageSize, sort);
+        Pageable pageable= PageRequest.of(pageNo,pageSize, sort);
         Page<PostEntity> postEntity = postRepository.findAll(pageable);
 
         //get content for page object
